@@ -103,13 +103,13 @@
         
         .product-details h1 {
             font-size: 18px;
-            font-weight: 600;
+            font-weight: 700;
             margin-bottom: 5px;
             line-height: 1.3;
         }
         
         .product-price {
-            color: #22C55E;
+            color: #0B6856;
             font-size: 18px;
             font-weight: 600;
         }
@@ -120,8 +120,14 @@
             align-items: center;
             gap: 8px;
             font-size: 16px;
-            font-weight: 600;
+            font-weight: 700;
             margin-bottom: 15px;
+        }
+
+        .section-title svg {
+            width: 20px;
+            height: 20px;
+            color: #58508d; /* Cor roxa do ícone */
         }
         
         .form-group {
@@ -131,8 +137,9 @@
         .form-group label {
             display: block;
             font-size: 14px;
-            color: #666;
+            color: #333;
             margin-bottom: 5px;
+            font-weight: 500;
         }
         
         .form-group input {
@@ -151,8 +158,15 @@
         
         .phone-input-wrapper {
             display: flex;
-            gap: 10px;
             align-items: center;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            transition: border-color 0.3s;
+            position: relative;
+        }
+
+        .phone-input-wrapper:focus-within {
+            border-color: #22C55E;
         }
         
         .country-select {
@@ -160,27 +174,42 @@
             align-items: center;
             gap: 5px;
             padding: 12px;
-            background: #f8f8f8;
-            border-radius: 8px;
-            font-size: 14px;
+            font-size: 15px;
             flex-shrink: 0;
+            border-right: 1px solid #e0e0e0;
         }
         
         .flag-icon {
             width: 20px;
             height: 15px;
-            background: linear-gradient(to bottom, #009b3a 0%, #009b3a 50%, #fedf00 50%, #fedf00 100%);
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21 15"><rect width="21" height="15" fill="%23009b3a"/><path d="M10.5 1.5l7.5 6-7.5 6-7.5-6z" fill="%23fedf00"/><circle cx="10.5" cy="7.5" r="3.5" fill="%23002776"/></svg>') center/cover;
             border-radius: 2px;
+        }
+
+        #customer-phone {
+            border: none;
+            padding-left: 10px;
+            width: 100%;
+            background-color: transparent;
+        }
+
+        #customer-phone:focus {
+            border-color: transparent;
+            outline: none;
         }
         
         .form-link {
-            color: #22C55E;
+            color: #36B37E;
             text-decoration: none;
             font-size: 13px;
             display: block;
             margin-top: 10px;
         }
         
+        .payment-section, .order-bumps-section {
+            margin-top: 30px;
+        }
+
         /* --- Pagamento --- */
         .payment-methods {
             display: flex;
@@ -191,30 +220,43 @@
         .payment-method {
             flex: 1;
             padding: 15px;
-            background: #f8f8f8;
-            border: 2px solid transparent;
+            background: #ffffff;
+            border: 1px solid #e0e0e0;
             border-radius: 8px;
             text-align: center;
             cursor: pointer;
             transition: all 0.3s;
-            font-weight: 500;
+            font-weight: 600;
             font-size: 14px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            height: 100px;
+            color: #4b5563;
+        }
+
+        .payment-method svg {
+            width: 32px;
+            height: 32px;
         }
         
         .payment-method.active {
-            background: #22C55E;
+            background: #0B6856;
             color: white;
-            border-color: #22C55E;
+            border-color: #0B6856;
         }
         
         .payment-method.disabled {
-            opacity: 0.5;
+            opacity: 0.7;
             cursor: not-allowed;
+            color: #4b5563;
         }
         
         .payment-benefits {
-            background: #f0fdf4;
-            border: 1.5px dashed #22C55E;
+            background: transparent;
+            border: 2.3px dashed #0B6856;
             border-radius: 8px;
             padding: 15px;
             margin-bottom: 20px;
@@ -234,48 +276,64 @@
         }
         
         .benefit-icon {
-            color: #22C55E;
-            font-size: 16px;
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
         }
         
         /* --- Order Bumps --- */
         .order-bump {
-            background: #f8f8f8;
+            background-color: #ededed;
+            border: 2px dashed #d1d1d1;
             border-radius: 8px;
-            padding: 15px;
             margin-bottom: 15px;
-            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .order-bump.selected {
+            border: 2px solid #0B6856;
+            background-color: #fff;
         }
         
         .order-bump-header {
-            background: #e0e0e0;
-            margin: -15px -15px 10px -15px;
+            background-color: #d1d1d1;
             padding: 8px 15px;
-            border-radius: 8px 8px 0 0;
-            font-size: 13px;
+            font-size: 14px;
             font-weight: 600;
-            color: #333;
+            color: #000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .order-bump.selected .order-bump-header {
+            background-color: #0B6856;
+            color: #fff;
+        }
+
+        .order-bump-header-icon {
+            display: none;
+        }
+
+        .order-bump.selected .order-bump-header-icon {
+            display: block;
         }
         
         .order-bump-content {
             display: flex;
             gap: 12px;
-            align-items: flex-start;
-        }
-        
-        .order-bump-checkbox {
-            width: 20px;
-            height: 20px;
-            accent-color: #22C55E;
-            cursor: pointer;
-            margin-top: 15px;
+            padding: 15px;
+            align-items: center;
         }
         
         .order-bump-image {
-            width: 60px;
-            height: 60px;
+            width: 80px;
+            height: 80px;
             border-radius: 6px;
             object-fit: cover;
+            flex-shrink: 0;
         }
         
         .order-bump-info {
@@ -284,26 +342,59 @@
         
         .order-bump-title {
             font-size: 14px;
-            font-weight: 600;
+            font-weight: 700;
             margin-bottom: 3px;
             line-height: 1.3;
+            color: #4b5563;
         }
         
         .order-bump-subtitle {
             font-size: 12px;
-            color: #666;
+            color: #4b5563;
             margin-bottom: 5px;
         }
         
         .order-bump-price {
             font-size: 16px;
             font-weight: 700;
-            color: #22C55E;
+            color: #0B6856;
+        }
+
+        .order-bump-add {
+            background-color: #d1d1d1;
+            padding: 8px 15px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .order-bump.selected .order-bump-add {
+            background-color: #0B6856;
+        }
+
+        .order-bump-add-checkbox {
+            margin-right: 8px;
+            cursor: pointer;
+        }
+
+        .order-bump-add-checkbox:checked {
+            accent-color: #38C4AF;
+        }
+
+        .order-bump-add-text {
+            font-size: 14px;
+            font-weight: bold;
+            color: #000;
+            user-select: none;
+        }
+
+        .order-bump.selected .order-bump-add-text {
+            color: #fff;
         }
         
         /* --- Resumo do Pedido --- */
         .order-summary {
-            background: #f8f8f8;
+            background: #ededed;
             border-radius: 8px;
             padding: 20px;
             margin-top: 20px;
@@ -320,8 +411,9 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 10px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #e0e0e0;
+            padding: 10px;
+            background-color: white;
+            border-radius: 4px;
         }
         
         .summary-item-info {
@@ -340,42 +432,23 @@
         
         .summary-item-name {
             font-size: 14px;
+            font-weight: bold;
+            color: #4b5563;
         }
         
         .summary-item-price {
             font-size: 14px;
             font-weight: 600;
+            color: #4b5563;
         }
-        
-        .summary-fee {
-            display: flex;
-            justify-content: space-between;
-            font-size: 14px;
-            color: #666;
-            margin: 10px 0;
-            align-items: center;
-        }
-        
-        .info-icon {
-            width: 16px;
-            height: 16px;
-            background: #e0e0e0;
-            border-radius: 50%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 10px;
-            margin-left: 5px;
-            cursor: help;
-        }
-        
+
         .summary-total {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-top: 15px;
             padding-top: 15px;
-            border-top: 1px solid #333;
+            border-top: 2px solid #000;
             font-size: 18px;
             font-weight: 700;
         }
@@ -383,12 +456,12 @@
         /* --- Botão CTA --- */
         .cta-button {
             width: 100%;
-            background: #22C55E;
+            background: #0B6856;
             color: white;
             border: none;
             padding: 16px;
-            font-size: 16px;
-            font-weight: 600;
+            font-size: 18px;
+            font-weight: 700;
             border-radius: 8px;
             cursor: pointer;
             transition: background 0.3s;
@@ -396,7 +469,7 @@
         }
         
         .cta-button:hover {
-            background: #16a34a;
+            background: #085242;
         }
         
         .cta-button:disabled {
@@ -498,7 +571,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.9);
             display: none;
             justify-content: center;
             align-items: center;
@@ -508,58 +581,160 @@
         
         .modal-content {
             background: white;
-            padding: 30px;
+            padding: 20px;
             border-radius: 12px;
             text-align: center;
             max-width: 400px;
             width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
         }
         
-        .modal-title {
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 15px;
+        .modal-header h1 {
+            font-size: 22px;
+            font-weight: 700;
         }
-        
-        .modal-text {
+        .modal-header p {
             font-size: 14px;
             color: #666;
-            margin-bottom: 20px;
         }
-        
+
+        .modal-timer-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 10px;
+        }
+        .modal-timer-section p {
+            font-weight: 500;
+        }
+        .modal-timer-display {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .modal-timer-box {
+            background-color: #E74C3C;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            border-radius: 8px;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-timer-separator {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .qr-code-container {
+            border: 2px dashed #e0e0e0;
+            border-radius: 8px;
+            padding: 10px;
+            margin: 0 auto;
+            width: 250px;
+        }
         #qr-code-img {
-            max-width: 200px;
-            margin: 0 auto 20px;
+            width: 100%;
             display: block;
+            border-radius: 4px;
+        }
+
+        .payment-status {
+            background-color: #f8f8f8;
+            border-radius: 8px;
+            padding: 8px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin: 0 auto;
+        }
+        .payment-status svg {
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .approval-notice {
+            background-color: #e6f7ec;
+            color: #0B6856;
+            border: 1px solid #b3e6c7;
+            border-radius: 9999px;
+            padding: 6px 12px;
+            font-size: 12px;
+            margin: 0 auto;
+        }
+
+        .modal-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .copy-pix-btn-new {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #0B6856;
+            background-color: white;
+            color: #0B6856;
+            border-radius: 8px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+        .payment-done-btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            background-color: #16a34a;
+            color: white;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .payment-instructions {
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        .instruction-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        .instruction-number {
+            flex-shrink: 0;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background-color: #e6f7ec;
+            color: #0B6856;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .instruction-text {
+            font-size: 14px;
+            color: #333;
         }
         
         #pix-code-input {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #e0e0e0;
-            border-radius: 6px;
-            font-size: 13px;
-            margin-bottom: 15px;
-            text-align: center;
-            background: #f8f8f8;
-        }
-        
-        #copy-pix-btn {
-            width: 100%;
-            background: #22C55E;
-            color: white;
-            border: none;
-            padding: 14px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 15px;
-        }
-        
-        .waiting-payment {
-            font-size: 13px;
-            color: #999;
-            margin-top: 20px;
+            position: absolute;
+            left: -9999px;
+            opacity: 0;
         }
     </style>
 </head>
@@ -583,7 +758,7 @@
                     <img src="https://cdn-checkout.cakto.com.br/products/Criativocalculadoraamigurumicomamigurumi.jpg?width=180" alt="Fabrica de Amigurumis" class="product-image">
                     <div class="product-details">
                         <h1>Fabrica de Amigurumis Premium</h1>
-                        <p class="product-price">R$ 1,00 à vista</p>
+                        <p class="product-price">R$&nbsp;1,00 à vista</p>
                     </div>
                 </div>
             </div>
@@ -591,7 +766,7 @@
             <!-- Formulário -->
             <div class="form-section">
                 <div class="section-title">
-                    <span>👤</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"></path></svg>
                     <span>Seus dados</span>
                 </div>
                 
@@ -603,11 +778,6 @@
                 <div class="form-group">
                     <label>Email</label>
                     <input type="email" id="customer-email" placeholder="Preencha seu email">
-                </div>
-                
-                <div class="form-group">
-                    <label>CPF</label>
-                    <input type="text" id="customer-cpf" placeholder="Preencha seu CPF">
                 </div>
                 
                 <div class="form-group">
@@ -627,26 +797,28 @@
             <!-- Pagamento -->
             <div class="payment-section">
                 <div class="section-title">
-                    <span>💳</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0 1 15.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 0 1 3 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125-1.125h-.375m1.5-1.5H21a.75.75 0 0 0-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 0 1-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 0 0 3 15h-.75M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm3 0h.008v.008H18V10.5Zm-12 0h.008v.008H6V10.5Z"></path></svg>
                     <span>Pagamento</span>
                 </div>
                 
                 <div class="payment-methods">
                     <div class="payment-method active" data-method="pix">
-                        PIX
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="#ffffff" viewBox="0 0 16 16"><path d="M11.917 11.71a2.046 2.046 0 0 1-1.454-.602l-2.1-2.1a.4.4 0 0 0-.551 0l-2.108 2.108a2.044 2.044 0 0 1-1.454.602h-.414l2.66 2.66c.83.83 2.177.83 3.007 0l2.667-2.668h-.253zM4.25 4.282c.55 0 1.066.214 1.454.602l2.108 2.108a.39.39 0 0 0 .552 0l2.1-2.1a2.044 2.044 0 0 1 1.453-.602h.253L9.503 1.623a2.127 2.127 0 0 0-3.007 0l-2.66 2.66h.414z"></path><path d="m14.377 6.496-1.612-1.612a.307.307 0 0 1-.114.023h-.733c-.379 0-.75.154-1.017.422l-2.1 2.1a1.005 1.005 0 0 1-1.425 0L5.268 5.32a1.448 1.448 0 0 0-1.018-.422h-.9a.306.306 0 0 1-.109-.021L1.623 6.496c-.83.83-.83 2.177 0 3.008l1.618 1.618a.305.305 0 0 1 .108-.022h.901c.38 0 .75-.153 1.018-.421L7.375 8.57a1.034 1.034 0 0 1 1.426 0l2.1 2.1c.267.268.638.421 1.017.421h.733c.04 0 .079.01.114.024l1.612-1.612c.83-.83.83-2.178 0-3.008z"></path></svg>
+                        <span>PIX</span>
                     </div>
                     <div class="payment-method disabled" data-method="card">
-                        Cartão de Crédito
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="#000000" aria-hidden="true"><path fill-rule="evenodd" d="M2.5 4A1.5 1.5 0 0 0 1 5.5V6h18v-.5A1.5 1.5 0 0 0 17.5 4h-15ZM19 8.5H1v6A1.5 1.5 0 0 0 2.5 16h15a1.5 1.5 0 0 0 1.5-1.5v-6ZM3 13.25a.75.75 0 0 1 .75-.75h1.5a.75.75 0 0 1 0 1.5h-1.5a.75.75 0 0 1-.75-.75Zm4.75-.75a.75.75 0 0 0 0 1.5h3.5a.75.75 0 0 0 0-1.5h-3.5Z" clip-rule="evenodd"></path></svg>
+                        <span>Cartão de Crédito</span>
                     </div>
                 </div>
                 
                 <div class="payment-benefits">
                     <div class="benefit-item">
-                        <span class="benefit-icon">✓</span>
+                        <img src="https://pay.cakto.com.br/assets/checkmark-big-circle.svg" alt="Checkmark" class="benefit-icon">
                         <span>Liberação imediata</span>
                     </div>
                     <div class="benefit-item">
-                        <span class="benefit-icon">✓</span>
+                        <img src="https://pay.cakto.com.br/assets/checkmark-big-circle.svg" alt="Checkmark" class="benefit-icon">
                         <span>É simples, só usar o aplicativo de seu banco para pagar Pix</span>
                     </div>
                 </div>
@@ -655,56 +827,68 @@
             <!-- Order Bumps -->
             <div class="order-bumps-section">
                 <div class="section-title">
-                    <span>☑️</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" style="color: rgb(0, 0, 0);"><path stroke-linecap="round" stroke-linejoin="round" d="m9 14.25 6-6m4.5-3.493V21.75l-3.75-1.5-3.75 1.5-3.75-1.5-3.75 1.5V4.757c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0c1.1.128 1.907 1.077 1.907 2.185ZM9.75 9h.008v.008H9.75V9Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm4.125 4.5h.008v.008h-.008V13.5Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"></path></svg>
                     <span>Ofertas limitadas</span>
                 </div>
                 
                 <!-- Order Bump 1 -->
                 <div class="order-bump">
                     <div class="order-bump-header">
-                        SUPER BÔNUS: Combo Princesas Disney (20 Receitas)
+                        <span>SUPER BÔNUS: Combo Princesas Disney (20 Receitas)</span>
+                        <svg class="order-bump-header-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 490.05 490.05" width="20" height="20" fill="#38C4AF"><path d="M418.275 418.275c95.7-95.7 95.7-250.8 0-346.5s-250.8-95.7-346.5 0-95.7 250.8 0 346.5 250.9 95.7 346.5 0zm-261.1-210.7 55.1 55.1 120.7-120.6 42.7 42.7-120.6 120.6-42.8 42.7-42.7-42.7-55.1-55.1 42.7-42.7z"></path></svg>
                     </div>
                     <div class="order-bump-content">
-                        <input type="checkbox" class="order-bump-checkbox" id="ob1" data-price="560">
-                        <img src="https://i.imgur.com/8Qj8m1v.png" alt="Combo Princesas" class="order-bump-image">
+                        <img src="https://cdn-checkout.cakto.com.br/products/banerrcompreosite37901.jpg?width=180" alt="Combo Princesas" class="order-bump-image">
                         <div class="order-bump-info">
                             <div class="order-bump-title">Combo 16 PRINCESAS DISNEY E 4...</div>
                             <div class="order-bump-subtitle">EXCLUSIVO PARA O GRUPO!</div>
                             <div class="order-bump-price">R$ 5,60</div>
                         </div>
                     </div>
+                    <label class="order-bump-add">
+                        <input type="checkbox" class="order-bump-add-checkbox" id="ob1" data-price="560">
+                        <span class="order-bump-add-text">Adicionar Produto</span>
+                    </label>
                 </div>
                 
                 <!-- Order Bump 2 -->
                 <div class="order-bump">
                     <div class="order-bump-header">
-                        ESPECIAL DE NATAL: Combo Exclusivo (Receitas Lucrativas)
+                        <span>ESPECIAL DE NATAL: Combo Exclusivo (Receitas Lucrativas)</span>
+                        <svg class="order-bump-header-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 490.05 490.05" width="20" height="20" fill="#38C4AF"><path d="M418.275 418.275c95.7-95.7 95.7-250.8 0-346.5s-250.8-95.7-346.5 0-95.7 250.8 0 346.5 250.9 95.7 346.5 0zm-261.1-210.7 55.1 55.1 120.7-120.6 42.7 42.7-120.6 120.6-42.8 42.7-42.7-42.7-55.1-55.1 42.7-42.7z"></path></svg>
                     </div>
                     <div class="order-bump-content">
-                        <input type="checkbox" class="order-bump-checkbox" id="ob2" data-price="680">
-                        <img src="https://i.imgur.com/8Qj8m1v.png" alt="Combo Natal" class="order-bump-image">
+                        <img src="https://cdn-checkout.cakto.com.br/products/BANNERPAcotoNatal1.jpg?width=180" alt="Combo Natal" class="order-bump-image">
                         <div class="order-bump-info">
                             <div class="order-bump-title">Combo de Natal Exclusivo Navidad</div>
                             <div class="order-bump-subtitle">EXCLUSIVO PARA O GRUPO!</div>
                             <div class="order-bump-price">R$ 6,80</div>
                         </div>
                     </div>
+                     <label class="order-bump-add">
+                        <input type="checkbox" class="order-bump-add-checkbox" id="ob2" data-price="680">
+                        <span class="order-bump-add-text">Adicionar Produto</span>
+                    </label>
                 </div>
                 
                 <!-- Order Bump 3 -->
                 <div class="order-bump">
                     <div class="order-bump-header">
-                        DECORAÇÃO CRIATIVA: Kit Almofadas Divertidas
+                        <span>DECORAÇÃO CRIATIVA: Kit Almofadas Divertidas</span>
+                        <svg class="order-bump-header-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 490.05 490.05" width="20" height="20" fill="#38C4AF"><path d="M418.275 418.275c95.7-95.7 95.7-250.8 0-346.5s-250.8-95.7-346.5 0-95.7 250.8 0 346.5 250.9 95.7 346.5 0zm-261.1-210.7 55.1 55.1 120.7-120.6 42.7 42.7-120.6 120.6-42.8 42.7-42.7-42.7-55.1-55.1 42.7-42.7z"></path></svg>
                     </div>
                     <div class="order-bump-content">
-                        <input type="checkbox" class="order-bump-checkbox" id="ob3" data-price="790">
-                        <img src="https://i.imgur.com/8Qj8m1v.png" alt="Kit Almofadas" class="order-bump-image">
+                        <img src="https://cdn-checkout.cakto.com.br/products/Capakitalmofadas1.png?width=180" alt="Kit Almofadas" class="order-bump-image">
                         <div class="order-bump-info">
                             <div class="order-bump-title">Kit Almofadas amigurumis pap PDF</div>
                             <div class="order-bump-subtitle">EXCLUSIVO PARA O GRUPO!</div>
                             <div class="order-bump-price">R$ 7,90</div>
                         </div>
                     </div>
+                     <label class="order-bump-add">
+                        <input type="checkbox" class="order-bump-add-checkbox" id="ob3" data-price="790">
+                        <span class="order-bump-add-text">Adicionar Produto</span>
+                    </label>
                 </div>
             </div>
             
@@ -714,19 +898,15 @@
                 <div id="summary-items">
                     <div class="summary-item">
                         <div class="summary-item-info">
-                            <img src="https://i.imgur.com/8Qj8m1v.png" alt="Produto" class="summary-item-image">
+                            <img src="https://cdn-checkout.cakto.com.br/products/Criativocalculadoraamigurumicomamigurumi.jpg?width=180" alt="Produto" class="summary-item-image">
                             <span class="summary-item-name">Fabrica de Amigurumis Premium</span>
                         </div>
-                        <span class="summary-item-price">R$ 0,00</span>
+                        <span class="summary-item-price">R$ 1,00</span>
                     </div>
-                </div>
-                <div class="summary-fee">
-                    <span>Taxa de serviço <span class="info-icon">?</span></span>
-                    <span>R$ 0,00</span>
                 </div>
                 <div class="summary-total">
                     <span>Total</span>
-                    <span id="total-price-display">R$ 67,89</span>
+                    <span id="total-price-display">R$ 1,99</span>
                 </div>
             </div>
             
@@ -770,24 +950,71 @@
     <!-- Modal PIX -->
     <div id="pix-modal" class="modal-overlay">
         <div class="modal-content">
-            <h2 class="modal-title">Finalize com PIX</h2>
-            <p class="modal-text">Escaneie o QR Code com o app do seu banco:</p>
-            <img id="qr-code-img" src="" alt="QR Code PIX">
-            <p class="modal-text">Ou copie o código abaixo:</p>
+            <div class="modal-header">
+                <h1>PIX gerado com sucesso!</h1>
+                <p>Agora é só finalizar o pagamento</p>
+            </div>
+
+            <div class="modal-timer-section">
+                <p>Este código expirará em:</p>
+                <div class="modal-timer-display">
+                    <div id="pix-timer-minutes" class="modal-timer-box">15</div>
+                    <span class="modal-timer-separator">:</span>
+                    <div id="pix-timer-seconds" class="modal-timer-box">00</div>
+                </div>
+            </div>
+
+            <div class="qr-code-container">
+                <img id="qr-code-img" src="" alt="QR Code PIX">
+            </div>
+
+            <div class="payment-status">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-6.219-8.56"></path></svg>
+                <span>Aguardando pagamento...</span>
+            </div>
+
+            <div class="approval-notice">
+                A aprovação leva no máximo 2 minutos
+            </div>
+
+            <div class="modal-buttons">
+                <button id="copy-pix-btn" class="copy-pix-btn-new">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.6667 1.33331H3.33333C2.59695 1.33331 2 1.93027 2 2.66665V10.6666C2 11.403 2.59695 12 3.33333 12H10.6667C11.403 12 12 11.403 12 10.6666V2.66665C12 1.93027 11.403 1.33331 10.6667 1.33331Z" stroke="#0B6856" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M14 5.33331V13.3333C14 14.0697 13.403 14.6666 12.6667 14.6666H5.33333" stroke="#0B6856" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                    <span>Copiar código Pix</span>
+                </button>
+                <button class="payment-done-btn">Já fiz o pagamento</button>
+            </div>
+            
             <input type="text" id="pix-code-input" readonly>
-            <button id="copy-pix-btn">Copiar Código PIX</button>
-            <p class="waiting-payment">Aguardando pagamento...</p>
+
+            <div class="payment-instructions">
+                <div class="instruction-item">
+                    <div class="instruction-number">1</div>
+                    <p class="instruction-text">Abra o app do seu banco e entre na opção <strong>Pix</strong></p>
+                </div>
+                <div class="instruction-item">
+                    <div class="instruction-number">2</div>
+                    <p class="instruction-text">Escolha a opção <strong>Pagar / Pix copia e cola</strong></p>
+                </div>
+                <div class="instruction-item">
+                    <div class="instruction-number">3</div>
+                    <p class="instruction-text">Escaneie o QR Code. Se preferir, copie e cole o código</p>
+                </div>
+                <div class="instruction-item">
+                    <div class="instruction-number">4</div>
+                    <p class="instruction-text">Depois, confirme o pagamento</p>
+                </div>
+            </div>
         </div>
     </div>
     
     <script>
         // --- CONFIGURAÇÃO DOS PRODUTOS (Preços em centavos) ---
-        const mainProduct = { name: "Fabrica de Amigurumis Premium", price: 1 };
-        const serviceFee = 99; // Taxa de serviço fixa
+        const mainProduct = { name: "Fabrica de Amigurumis Premium", price: 100, image: "https://cdn-checkout.cakto.com.br/products/Criativocalculadoraamigurumicomamigurumi.jpg?width=180" };
         const orderBumps = [
-            { id: "ob1", name: "Combo Princesas Disney", price: 560 },
-            { id: "ob2", name: "Combo de Natal", price: 680 },
-            { id: "ob3", name: "Kit Almofadas", price: 790 }
+            { id: "ob1", name: "Combo Princesas Disney", price: 560, image: "https://cdn-checkout.cakto.com.br/products/banerrcompreosite37901.jpg?width=180" },
+            { id: "ob2", name: "Combo de Natal", price: 680, image: "https://cdn-checkout.cakto.com.br/products/BANNERPAcotoNatal1.jpg?width=180" },
+            { id: "ob3", name: "Kit Almofadas", price: 790, image: "https://cdn-checkout.cakto.com.br/products/Capakitalmofadas1.png?width=180" }
         ];
         
         // --- Timer Countdown ---
@@ -807,24 +1034,7 @@
         updateTimer();
         
         // --- Formatação de inputs ---
-        const cpfInput = document.getElementById('customer-cpf');
         const phoneInput = document.getElementById('customer-phone');
-        
-        cpfInput.addEventListener('input', function(e) {
-            let value = e.target.value.replace(/\D/g, '');
-            if (value.length > 11) value = value.slice(0, 11);
-            
-            let formatted = value;
-            if (value.length > 9) {
-                formatted = value.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
-            } else if (value.length > 6) {
-                formatted = value.replace(/(\d{3})(\d{3})(\d{3})/, '$1.$2.$3');
-            } else if (value.length > 3) {
-                formatted = value.replace(/(\d{3})(\d{3})/, '$1.$2');
-            }
-            
-            e.target.value = formatted;
-        });
         
         phoneInput.addEventListener('input', function(e) {
             let value = e.target.value.replace(/\D/g, '');
@@ -852,13 +1062,13 @@
         }
         
         function updateSummary() {
-            let currentTotal = mainProduct.price + serviceFee;
+            let currentTotal = mainProduct.price;
             
             // Sempre mostrar o produto principal
             let summaryHTML = `
                 <div class="summary-item">
                     <div class="summary-item-info">
-                        <img src="https://i.imgur.com/8Qj8m1v.png" alt="Produto" class="summary-item-image">
+                        <img src="${mainProduct.image}" alt="${mainProduct.name}" class="summary-item-image">
                         <span class="summary-item-name">${mainProduct.name}</span>
                     </div>
                     <span class="summary-item-price">${formatPrice(mainProduct.price)}</span>
@@ -873,7 +1083,7 @@
                     summaryHTML += `
                         <div class="summary-item">
                             <div class="summary-item-info">
-                                <img src="https://i.imgur.com/8Qj8m1v.png" alt="${bump.name}" class="summary-item-image">
+                                <img src="${bump.image}" alt="${bump.name}" class="summary-item-image">
                                 <span class="summary-item-name">${bump.name}</span>
                             </div>
                             <span class="summary-item-price">+${formatPrice(bump.price)}</span>
@@ -887,18 +1097,44 @@
         }
         
         // Event listeners para order bumps
-        document.querySelectorAll('.order-bump-checkbox').forEach(checkbox => {
-            checkbox.addEventListener('change', updateSummary);
+        document.querySelectorAll('.order-bump-add-checkbox').forEach(checkbox => {
+            checkbox.addEventListener('change', (e) => {
+                updateSummary();
+                updateOrderBumpStyle(e.target);
+            });
         });
+
+        document.querySelectorAll('.order-bump').forEach(bump => {
+            bump.addEventListener('click', (e) => {
+                // Evita que o clique no link dentro do bump propague
+                if (e.target.tagName === 'A') return;
+
+                const checkbox = bump.querySelector('.order-bump-add-checkbox');
+                // Não aciona o clique se o alvo já for o checkbox ou seu label para evitar duplo disparo
+                if (e.target !== checkbox && e.target.closest('label') !== checkbox.parentElement) {
+                    checkbox.checked = !checkbox.checked;
+                    // Dispara o evento change manualmente
+                    checkbox.dispatchEvent(new Event('change'));
+                }
+            });
+        });
+
+        function updateOrderBumpStyle(checkbox) {
+            const orderBump = checkbox.closest('.order-bump');
+            if (checkbox.checked) {
+                orderBump.classList.add('selected');
+            } else {
+                orderBump.classList.remove('selected');
+            }
+        }
         
         // --- Validação do formulário ---
         function validateForm() {
             const name = document.getElementById('customer-name').value.trim();
             const email = document.getElementById('customer-email').value.trim();
-            const cpf = document.getElementById('customer-cpf').value.trim();
             const phone = document.getElementById('customer-phone').value.trim();
             
-            if (!name || !email || !cpf || !phone) {
+            if (!name || !email || !phone) {
                 alert('Por favor, preencha todos os campos obrigatórios.');
                 return false;
             }
@@ -907,13 +1143,6 @@
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(email)) {
                 alert('Por favor, insira um email válido.');
-                return false;
-            }
-            
-            // Validar CPF (simplificado)
-            const cpfNumbers = cpf.replace(/\D/g, '');
-            if (cpfNumbers.length !== 11) {
-                alert('Por favor, insira um CPF válido.');
                 return false;
             }
             
@@ -933,9 +1162,34 @@
         const qrCodeImg = document.getElementById('qr-code-img');
         const pixCodeInput = document.getElementById('pix-code-input');
         const copyPixBtn = document.getElementById('copy-pix-btn');
+        let pixTimerInterval;
         
         payButton.addEventListener('click', handlePayment);
         
+        function startPixTimer(duration) {
+            let timer = duration;
+            const minutesEl = document.getElementById('pix-timer-minutes');
+            const secondsEl = document.getElementById('pix-timer-seconds');
+
+            clearInterval(pixTimerInterval); // Limpa timer anterior se houver
+
+            pixTimerInterval = setInterval(function () {
+                const minutes = Math.floor(timer / 60);
+                const seconds = timer % 60;
+
+                minutesEl.textContent = minutes.toString().padStart(2, '0');
+                secondsEl.textContent = seconds.toString().padStart(2, '0');
+
+                if (--timer < 0) {
+                    clearInterval(pixTimerInterval);
+                    // Aqui você pode adicionar lógica para quando o tempo expirar
+                    // Por exemplo, fechar o modal e mostrar uma mensagem.
+                    pixModal.style.display = 'none';
+                    alert('O tempo para pagamento do PIX expirou.');
+                }
+            }, 1000);
+        }
+
         async function handlePayment() {
             // Validar formulário primeiro
             if (!validateForm()) {
@@ -943,7 +1197,7 @@
             }
             
             // Calcular valor total
-            let finalValueInCents = mainProduct.price + serviceFee;
+            let finalValueInCents = mainProduct.price;
             orderBumps.forEach(bump => {
                 const checkbox = document.getElementById(bump.id);
                 if (checkbox && checkbox.checked) {
@@ -964,7 +1218,6 @@
                         customer: {
                             name: document.getElementById('customer-name').value,
                             email: document.getElementById('customer-email').value,
-                            cpf: document.getElementById('customer-cpf').value.replace(/\D/g, ''),
                             phone: document.getElementById('customer-phone').value.replace(/\D/g, '')
                         }
                     })
@@ -981,6 +1234,7 @@
                 qrCodeImg.src = pixData.qr_code_base64;
                 pixCodeInput.value = pixData.qr_code;
                 pixModal.style.display = 'flex';
+                startPixTimer(15 * 60); // Inicia timer de 15 minutos
                 
                 // Dispara evento de checkout do Pinterest
                 try {
@@ -1010,13 +1264,11 @@
             pixCodeInput.select();
             document.execCommand('copy');
             
-            const originalText = copyPixBtn.textContent;
-            copyPixBtn.textContent = '✓ Copiado!';
-            copyPixBtn.style.background = '#16a34a';
+            const originalText = copyPixBtn.querySelector('span').textContent;
+            copyPixBtn.querySelector('span').textContent = '✓ Copiado!';
             
             setTimeout(() => {
-                copyPixBtn.textContent = originalText;
-                copyPixBtn.style.background = '#22C55E';
+                copyPixBtn.querySelector('span').textContent = originalText;
             }, 2000);
         });
         
@@ -1024,11 +1276,15 @@
         pixModal.addEventListener('click', (e) => {
             if (e.target === pixModal) {
                 pixModal.style.display = 'none';
+                clearInterval(pixTimerInterval);
             }
         });
         
-        // Inicializar resumo
-        document.addEventListener('DOMContentLoaded', updateSummary);
+        // Inicializar resumo e estilos dos bumps
+        document.addEventListener('DOMContentLoaded', () => {
+            updateSummary();
+            document.querySelectorAll('.order-bump-add-checkbox').forEach(updateOrderBumpStyle);
+        });
     </script>
 </body>
 </html>
