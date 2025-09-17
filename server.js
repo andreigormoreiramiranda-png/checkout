@@ -8,7 +8,7 @@ const port = 3000; // Porta onde nosso servidor vai rodar
 
 // --- CONFIGURAÇÃO IMPORTANTE ---
 // Coloque seu Token da PushInPay aqui. NUNCA exponha isso no frontend.
-const PUSHINPAY_API_TOKEN = '47036|AMvPPZwe9Nu34mmLg64ErpPzBhSOjNczUCSxJARN81e6778b'; 
+const PUSHINPAY_API_TOKEN = '47073|QKcWJLCMKYQRkaJIIIENSgVl9HZAolu4zVtT0xF9de9a6059'; 
 const PUSHINPAY_API_URL = 'https://api.pushinpay.com.br/api/pix/cashIn';
 
 app.use(cors());
